@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap");
+
+:root {
+  --ink: #10323a;
+  --paper: #f6f4ee;
+  --card: #ffffff;
+  --line: #e2ded3;
+  --muted: #5e6e72;
+  --accent: #0e7c73;
+  --warn-bg: #fef3c7;
+  --warn: #78350f;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: #1e2a2e; font-family: "Sarabun", Tahoma, sans-serif; font-size: 18px; line-height: 1.6; }
+main { max-width: 960px; margin: 0 auto; padding: 32px 16px 64px; }
+h1, h2 { color: var(--ink); line-height: 1.25; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; margin: 16px 0; }
+.warn { background: var(--warn-bg); color: var(--warn); border-radius: 14px; padding: 20px; margin: 16px 0; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.stat b { display: block; font-size: 32px; color: var(--ink); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--card); }
+th { background: var(--ink); color: #fff; text-align: left; padding: 8px 10px; }
+td { border-bottom: 1px solid var(--line); padding: 8px 10px; vertical-align: top; }
+code { background: #eef2f2; padding: 1px 6px; border-radius: 6px; }

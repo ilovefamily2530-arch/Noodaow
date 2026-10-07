@@ -1,0 +1,11 @@
+# แพ็กเกจและไฟล์ที่สร้างอัตโนมัติ (ไม่ต้องขึ้น GitHub)
+/node_modules
+/.next/
+/out/
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+
+# ค่าลับ ห้ามขึ้น GitHub เด็ดขาด
+.env*
+!.env.example

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <style>
+    body { font-family: sans-serif; max-width: 760px; margin: 24px auto; padding: 0 16px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, textarea { width: 100%; padding: 8px; box-sizing: border-box; }
+    button { margin-top: 14px; padding: 10px 18px; background: #6d28d9; color: #fff; border: 0; border-radius: 8px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 6px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h2>ระบบบันทึกการนิเทศ</h2>
+  <form id="f">
+    <label>โรงเรียน</label><input name="school" required>
+    <label>ครูผู้รับการนิเทศ</label><input name="teacher">
+    <label>ประเด็นการนิเทศ</label><input name="topic" required>
+    <label>ผลการนิเทศ</label><textarea name="result" rows="3"></textarea>
+    <label>ผู้บันทึก</label><input name="recorder">
+    <button type="submit">บันทึก</button> <span id="msg"></span>
+  </form>
+  <table><thead><tr><th>วันที่</th><th>โรงเรียน</th><th>ครู</th><th>ประเด็น</th><th>ผล</th><th>ผู้บันทึก</th></tr></thead><tbody id="rows"></tbody></table>
+  <script>
+    function load() {
+      google.script.run.withSuccessHandler(function (rows) {
+        document.getElementById('rows').innerHTML = rows.map(function (r) {
+          return '<tr>' + r.map(function (c) { return '<td>' + String(c).replace(/</g, '&lt;') + '</td>'; }).join('') + '</tr>';
+        }).join('');
+      }).listRecords();
+    }
+    document.getElementById('f').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      const data = Object.fromEntries(new FormData(ev.target));
+      document.getElementById('msg').textContent = 'กำลังบันทึก...';
+      google.script.run
+        .withSuccessHandler(function (m) { document.getElementById('msg').textContent = m; ev.target.reset(); load(); })
+        .withFailureHandler(function (err) { document.getElementById('msg').textContent = err.message; })
+        .saveRecord(data);
+    });
+    load();
+  </script>
+</body>
+</html>
