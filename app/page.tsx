@@ -48,6 +48,9 @@ export default async function Home() {
           margin: "60px auto",
           padding: 30,
           fontFamily: "Arial, sans-serif",
+          background: "rgba(255,255,255,0.7)",
+          borderRadius: 20,
+          boxShadow: "0 10px 30px rgba(91, 133, 170, 0.14)",
         }}
       >
         <h1>ระบบติดตามและรายงานผลโครงการ</h1>
@@ -78,6 +81,9 @@ export default async function Home() {
         margin: "40px auto",
         padding: 30,
         fontFamily: "Arial, sans-serif",
+        background: "rgba(255,255,255,0.72)",
+        borderRadius: 20,
+        boxShadow: "0 10px 30px rgba(91, 133, 170, 0.14)",
       }}
     >
       <h1>ระบบติดตามและรายงานผลโครงการ</h1>
